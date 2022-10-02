@@ -16,24 +16,24 @@ const data = [
 
 export default function Home () {
   return (
-    <div>
+    <>
       <Head>
         <title>Parkleitsystem</title>
       </Head>
-      <div style={{ backgroundPosition: '10px 10px' }} className="container mx-auto flex flex-wrap inset-0 bg-slate-50 bg-grid-slate-100">
-        {data.map((post) => (
-          <Fragment key={post.name}>
-            <div className="lg:w-1/4 md:w-1/2 w-full p-4">
-              <div className="p-4 rounded-xl shadow-lg bg-white flex items-center">
+      <div style={{ backgroundPosition: '10px 10px' }} className="bg-slate-50 bg-grid-slate-100 min-h-screen">
+        <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 xl:px-80 md:px-32 p-4 justify-items-center">
+          {data.map((post) => (
+            <Fragment key={post.name}>
+              <div className="rounded-xl shadow-lg bg-white flex py-2 w-max pl-2 pr-1">
                 <div className="text-xl font-medium text-black">{post.name}</div>
                 <div className="shrink-0">
                   <BoltIcon className="h-8 w-8 text-green-300" />
                 </div>
               </div>
-            </div>
-          </Fragment>
-        ))}
+            </Fragment>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
