@@ -4,10 +4,6 @@ const assetPrefix = './'
 const basePath = ''
 
 const nextConfig = {
-  i18n: {
-    locales: ['de'],
-    defaultLocale: 'de'
-  },
   images: {
     unoptimized: true
   },
