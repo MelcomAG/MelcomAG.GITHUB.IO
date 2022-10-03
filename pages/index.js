@@ -3,10 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 import { Fragment } from 'react'
 import Head from 'next/head'
 
-const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
-const NEXT_PUBLIC_SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY
-if (!NEXT_PUBLIC_SUPABASE_URL) throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_URL')
-if (!NEXT_PUBLIC_SUPABASE_KEY) throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_KEY')
+const NEXT_PUBLIC_SUPABASE_URL = 'https://bkcwarfxyilwapxidlgo.supabase.co'
+const NEXT_PUBLIC_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrY3dhcmZ4eWlsd2FweGlkbGdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQzMDc3MDksImV4cCI6MTk3OTg4MzcwOX0.4-ac9uKJyQXHRm3NczvK2hzajXu1Eeu1H8sKGxggWDg'
 const supabase = createClient(NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_KEY)
 
 export default function Home ({ lessons }) {
