@@ -4,9 +4,8 @@ const isGithubActions = process.env.GITHUB_ACTIONS || false
 let nextConfig = {}
 
 if (isGithubActions) {
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-  const assetPrefix = `/${repo}/`
-  const basePath = `/${repo}`
+  const assetPrefix = './'
+  const basePath = ''
   nextConfig = {
     assetPrefix,
     basePath,
