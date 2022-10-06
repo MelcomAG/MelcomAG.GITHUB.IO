@@ -41,7 +41,7 @@ export default function ParkingList () {
       if (parking.ist_elektro === true) {
         return (
         <div className="p-4" key={parking.parkplatz_nr}>
-            <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 place-items-center justify-center">
+            <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 ring-1 ring-gray-900/5 place-items-center justify-center">
                 <div className="text-2xl font-bold text-black ml-0.5">Nr. {parking.parkplatz_nr}</div>
                 <div className="shrink-0">
                     <BoltIcon className="h-8 w-8 text-green-300" />
@@ -51,7 +51,7 @@ export default function ParkingList () {
       }
       return (
         <div className="p-4" key={parking.parkplatz_nr}>
-          <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 place-items-center justify-center">
+          <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 ring-1 ring-gray-900/5 place-items-center justify-center">
               <div className="text-2xl font-bold text-black">Nr. {parking.parkplatz_nr}</div>
           </div>
         </div>
