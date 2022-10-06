@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { BoltIcon } from '@heroicons/react/24/solid'
 
@@ -8,9 +8,12 @@ const supabase = createClient(NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_KEY
 
 export default function ParkingList () {
   const [parkings, setParkings] = useState([])
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     fetchParkings()
+    setLoading(false)
   }, [])
 
   const fetchParkings = async () => {
@@ -23,29 +26,38 @@ export default function ParkingList () {
     console.log(parkings, error)
   }
 
+  if (isLoading) return <p>Loading...</p>
+  if (!parkings) return <p>No profile data</p>
+
   return (
   <>
-    <div className="text-3xl font-bold col-span-full">Insgesamt verfügbar { parkings.length } Parkplätze</div>
+    <div className="relative bg-white px-6 pt-4 pb-4 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+        <div className="mx-auto max-w-md">
+            <div className="font-bold">Insgesamt verfügbar sind { parkings.length } Parkplätze</div>
+        </div>
+    </div>
+    <div className="relative mt-12 flex h-80 flex-wrap content-start justify-around">
     {parkings.map((parking) => {
       if (parking.ist_elektro === true) {
         return (
-        <Fragment key={parking.parkplatz_nr}>
-            <div className="rounded-xl shadow-lg bg-white flex py-2 w-max pl-2 pr-1 space-x-1">
-                <div className="text-2xl font-bold text-black">Nr. {parking.parkplatz_nr}</div>
+        <div className="p-4" key={parking.parkplatz_nr}>
+            <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 place-items-center justify-center">
+                <div className="text-2xl font-bold text-black ml-0.5">Nr. {parking.parkplatz_nr}</div>
                 <div className="shrink-0">
                     <BoltIcon className="h-8 w-8 text-green-300" />
                 </div>
             </div>
-        </Fragment>)
+        </div>)
       }
       return (
-      <Fragment key={parking.parkplatz_nr}>
-        <div className="rounded-xl shadow-lg bg-white flex p-2">
-            <div className="text-2xl font-bold text-black">Nr. {parking.parkplatz_nr}</div>
+        <div className="p-4" key={parking.parkplatz_nr}>
+          <div className="rounded-xl shadow-lg bg-white flex h-12 w-40 space-x-1 place-items-center justify-center">
+              <div className="text-2xl font-bold text-black">Nr. {parking.parkplatz_nr}</div>
+          </div>
         </div>
-      </Fragment>
       )
     })}
+    </div>
     </>
   )
 }

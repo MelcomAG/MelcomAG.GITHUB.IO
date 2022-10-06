@@ -7,10 +7,9 @@ export default function Home () {
       <Head>
         <title>Parkleitsystem</title>
       </Head>
-      <div style={{ backgroundPosition: '10px 10px' }} className="bg-slate-50 bg-grid-slate-100 min-h-screen">
-        <div className="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8 xl:px-96 md:px-32 p-4 justify-items-center">
+      <div className="relative flex min-h-screen flex-col justify-start overflow-hidden bg-gray-50 py-4 sm:py-12">
+        <div style={{ backgroundPosition: '10px 10px' }} className="absolute inset-0 bg-grid-slate-100 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
         <ParkingList />
-        </div>
       </div>
     </>
   )
