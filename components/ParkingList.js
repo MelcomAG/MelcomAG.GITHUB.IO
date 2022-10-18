@@ -28,14 +28,15 @@ export default function ParkingList () {
   }
 
   if (isLoading) return <div className="font-bold">Loading...</div>
-  if (!parkings) return <div className="font-bold">No parking data</div>
-  if (parkings.length === 1) {
-    strParkplatz = 'Parkplatz'
-  } else {
-    strParkplatz = 'Parkplätze'
-  }
+  else if (!parkings) return <div className="font-bold">No parking data</div>
+  else {
+    if (parkings.length === 1) {
+      strParkplatz = 'Parkplatz'
+    } else {
+      strParkplatz = 'Parkplätze'
+    }
 
-  return (
+    return (
   <>
     <div className="relative bg-white px-6 pt-4 pb-4 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div className="mx-auto max-w-md">
@@ -65,5 +66,6 @@ export default function ParkingList () {
     })}
     </div>
     </>
-  )
+    )
+  }
 }
