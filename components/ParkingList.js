@@ -9,6 +9,7 @@ const supabase = createClient(NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_KEY
 export default function ParkingList () {
   const [parkings, setParkings] = useState([])
   const [isLoading, setLoading] = useState(false)
+  let strParkplatz
 
   useEffect(() => {
     setLoading(true)
@@ -26,17 +27,22 @@ export default function ParkingList () {
     console.log(parkings, error)
   }
 
-  if (isLoading) return <p>Loading...</p>
-  if (!parkings) return <p>No profile data</p>
+  if (isLoading) return <div className="font-bold">Loading...</div>
+  if (!parkings) return <div className="font-bold">No parking data</div>
+  if (parkings.length === 1) {
+    strParkplatz = 'Parkplatz'
+  } else {
+    strParkplatz = 'Parkplätze'
+  }
 
   return (
   <>
     <div className="relative bg-white px-6 pt-4 pb-4 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div className="mx-auto max-w-md">
-            <div className="font-bold">Insgesamt verfügbar sind { parkings.length } Parkplätze</div>
+            <div className="font-bold">Insgesamt verfügbar sind { parkings.length } { strParkplatz }</div>
         </div>
     </div>
-    <div className="relative mt-12 flex h-80 flex-wrap content-start justify-around">
+    <div className="relative mt-12 flex h-80 flex-wrap content-start justify-around md:px-48 lg:px-96">
     {parkings.map((parking) => {
       if (parking.ist_elektro === true) {
         return (
