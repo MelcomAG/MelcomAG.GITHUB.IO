@@ -30,17 +30,19 @@ export default function ParkingList () {
   if (isLoading) return <div className="font-bold">Loading...</div>
   else if (!parkings) return <div className="font-bold">No parking data</div>
   else {
-    if (parkings.length === 1) {
-      strParkplatz = 'Parkplatz'
+    if (parkings.length === 0) {
+      strParkplatz = 'Es ist leider kein Parkplatz verfügbar'
+    } else if (parkings.length === 1) {
+      strParkplatz = 'Insgesamt verfügbar ist 1 Parkplatz'
     } else {
-      strParkplatz = 'Parkplätze'
+      strParkplatz = 'Insgesamt verfügbar sind ' + parkings.length + ' Parkplätze'
     }
 
     return (
   <>
     <div className="relative bg-white px-6 pt-4 pb-4 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div className="mx-auto max-w-md">
-            <div className="font-bold">Insgesamt verfügbar sind { parkings.length } { strParkplatz }</div>
+            <div className="font-bold">{ strParkplatz }</div>
         </div>
     </div>
     <div className="relative mt-12 flex h-80 flex-wrap content-start justify-around md:px-48 lg:px-96">
